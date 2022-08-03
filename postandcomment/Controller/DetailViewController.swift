@@ -20,9 +20,11 @@ class DetailViewController: UIViewController {
     var postid:Int = 0
     var userId:Int = 0
     var comment:[Comment] = []
+    var user:[User] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.bounces = false
         //tableView.delegate = self
         userName.text = " User: \(nameHolder)"
         postTitle.text = titleHolder
@@ -37,11 +39,26 @@ class DetailViewController: UIViewController {
         }
         
         CommentApi.shared.fetchCommentList(postId: postid, onCompletion: commentFunc)
+        
+        let userFunc = {
+            (fetchUser:[User]) in
+            self.user = fetchUser
+        }
+        
+        UserApi.shared.fetchUserList(onCompletion: userFunc)
         // Do any additional setup after loading the view.
     }
     
     @IBAction func userButtonPressed(_ sender: UIButton) {
-        print("UserButton Pressed")
+        print("UserID: \(userId)")
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "userView") as? UserViewController{
+            self.navigationController?.pushViewController(vc, animated: true)
+            vc.userName = user[userId - 1].username
+            vc.userEmail = user[userId - 1].email
+            vc.userCompany = user[userId - 1].company.name
+            vc.userAdress = "\(user[userId - 1].address.street), \(user[userId - 1].address.suite), \(user[userId - 1].address.city), \(user[userId - 1].address.zipcode)"
+            vc.userId = userId
+        }
     }
     
 }

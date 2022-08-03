@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC148857289A725100723A5A /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC148856289A725100723A5A /* UserViewController.swift */; };
 		BC59F20928998F82009375AE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC59F20828998F82009375AE /* DetailViewController.swift */; };
 		BCEC93F42899FE2100C3353C /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEC93F32899FE2000C3353C /* CommentTableViewCell.swift */; };
 		BCF87B1E2898B4F00058D2AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF87B1D2898B4F00058D2AC /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC148856289A725100723A5A /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		BC59F20828998F82009375AE /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BCEC93F32899FE2000C3353C /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		BCF87B1A2898B4F00058D2AC /* postandcomment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = postandcomment.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +96,7 @@
 				BCEC93F32899FE2000C3353C /* CommentTableViewCell.swift */,
 				BCF87B212898B4F00058D2AC /* ViewController.swift */,
 				BC59F20828998F82009375AE /* DetailViewController.swift */,
+				BC148856289A725100723A5A /* UserViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCF87B222898B4F00058D2AC /* ViewController.swift in Sources */,
+				BC148857289A725100723A5A /* UserViewController.swift in Sources */,
 				BCF87B1E2898B4F00058D2AC /* AppDelegate.swift in Sources */,
 				BCF87B202898B4F00058D2AC /* SceneDelegate.swift in Sources */,
 				BCEC93F42899FE2100C3353C /* CommentTableViewCell.swift in Sources */,
