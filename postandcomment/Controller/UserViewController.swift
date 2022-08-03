@@ -42,14 +42,16 @@ class UserViewController: UIViewController {
         
         AlbumApi.shared.fetchAlbumList(userId: userId, onCompletion: albumFunc)
         
-//        let photoFunc = {
-//            (fetchPhoto:[Photo]) in
-//            self.photo = fetchPhoto
-//            self.tableView.reloadData()
-//        }
-//        
-//        
-//        PhotoApi.shared.fetchPhotoList(albumId: ids , onCompletion: photoFunc)
+        let photoFunc = {
+            (fetchPhoto:[Photo]) in
+            DispatchQueue.main.async {
+                self.photo = fetchPhoto
+                self.tableView.reloadData()
+            }
+        }
+        
+        
+        PhotoApi.shared.fetchPhotoList(albumId: userId , onCompletion: photoFunc)
     }
 }
 
