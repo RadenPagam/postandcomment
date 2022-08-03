@@ -68,7 +68,6 @@ extension ViewController: UITableViewDataSource{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! postTableViewCell
         print("index path \(indexPath.row) | user \(user[indexPath.row / 10].id)")
-        _ = indexPath.row
         let name = user[indexPath.row / 10].username
         let company = user[indexPath.row / 10].company.name
         let title = post[indexPath.row].title
@@ -90,7 +89,6 @@ extension ViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300.0
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("ID: \(indexPath.row + 1)")
         if let vc = storyboard?.instantiateViewController(withIdentifier: "detailView") as? DetailViewController {

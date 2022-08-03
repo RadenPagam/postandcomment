@@ -315,13 +315,39 @@
                                         <rect key="frame" x="0.0" y="391" width="414" height="427"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="albumCell" rowHeight="133" id="hUk-vz-4aa">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="albumCell" rowHeight="133" id="hUk-vz-4aa" customClass="AlbumTableViewCell" customModule="postandcomment" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="44.5" width="414" height="133"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hUk-vz-4aa" id="lDW-uw-GFL">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="133"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="D9c-Tt-LUp">
+                                                            <rect key="frame" x="30" y="21" width="354" height="91"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b2P-xF-fNA">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="173" height="91"/>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="albumTitle" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0A-xW-2kB">
+                                                                    <rect key="frame" x="181" y="0.0" width="173" height="91"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="D9c-Tt-LUp" secondAttribute="trailing" constant="10" id="CPE-IH-7g9"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="D9c-Tt-LUp" secondAttribute="bottom" constant="10" id="Rkv-K0-fSt"/>
+                                                        <constraint firstItem="D9c-Tt-LUp" firstAttribute="leading" secondItem="lDW-uw-GFL" secondAttribute="leadingMargin" constant="10" id="gN8-4A-0qR"/>
+                                                        <constraint firstItem="D9c-Tt-LUp" firstAttribute="top" secondItem="lDW-uw-GFL" secondAttribute="topMargin" constant="10" id="lsS-2m-GXC"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="albumPhoto" destination="b2P-xF-fNA" id="E4H-3z-clA"/>
+                                                    <outlet property="albumTitle" destination="W0A-xW-2kB" id="XnA-ca-LOy"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>

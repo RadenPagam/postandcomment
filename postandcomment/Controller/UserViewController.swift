@@ -27,6 +27,7 @@ class UserViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.bounces = false
+        tableView.delegate = self
         uName.text = userName
         uEmail.text = userEmail
         uAdress.text = userAdress
@@ -59,15 +60,48 @@ class UserViewController: UIViewController {
 extension UserViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return album.count
+        if album.count > 0 && photo.count > 0{
+            return album.count
+        }else{
+            return 0
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "albumCell", for: indexPath)
-        
-        cell.textLabel?.text = album[indexPath.row].title
-        print("\(album[indexPath.row].id)")
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "albumCell", for: indexPath) as! AlbumTableViewCell
+        cell.albumTitle.text = album[indexPath.row].title
+        cell.albumPhoto.downloaded(from: photo[album[indexPath.row].id].thumbnailUrl)
+            print("\(album[indexPath.row].id)")
+            print("\(photo[album[indexPath.row].id].thumbnailUrl)")
+            return cell
     }
-    
-    
+}
+
+//MARK: - TableViewDelegate
+extension UserViewController:UITableViewDelegate{
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200.0
+    }
+}
+
+//MARK: - ImageVIew
+
+extension UIImageView {
+    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() { [weak self] in
+                self?.image = image
+            }
+        }.resume()
+    }
+    func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit) {
+        guard let url = URL(string: link) else { return }
+        downloaded(from: url, contentMode: mode)
+    }
 }
