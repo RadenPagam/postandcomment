@@ -28,10 +28,10 @@ class UserViewController: UIViewController {
         tableView.dataSource = self
         tableView.bounces = false
         tableView.delegate = self
-        uName.text = userName
-        uEmail.text = userEmail
-        uAdress.text = userAdress
-        uCompany.text = userCompany
+        uName.text = "User Name: \(userName)"
+        uEmail.text = "E-mail: \(userEmail)"
+        uAdress.text = "Adress: \(userAdress)"
+        uCompany.text = "Company: \(userCompany)"
         
         let albumFunc = {
             (fetchAlbum:[Album]) in
