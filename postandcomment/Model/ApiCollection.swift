@@ -40,7 +40,7 @@ struct Post:Codable{
 final class PhotoApi{
     static let shared = PhotoApi()
     func fetchPhotoList(albumId:Int, onCompletion: @escaping ([Photo]) -> ()){
-        let urlString = "https://jsonplaceholder.typicode.com/photos?albumId=\(albumId)"
+        let urlString = "https://jsonplaceholder.typicode.com/albums/\(albumId)/photos"
         let url = URL(string: urlString)!
         let task = URLSession.shared.dataTask(with: url) {( data, resp, error )in
             guard let data = data else{

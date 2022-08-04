@@ -20,7 +20,6 @@ class UserViewController: UIViewController {
     var userAdress:String = ""
     var userCompany:String = ""
     var userId:Int = 0
-    
     var album:[Album] = []
     var photo:[Photo] = []
     override func viewDidLoad() {
@@ -53,6 +52,7 @@ class UserViewController: UIViewController {
         
         
         PhotoApi.shared.fetchPhotoList(albumId: userId , onCompletion: photoFunc)
+        
     }
 }
 
@@ -69,9 +69,8 @@ extension UserViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "albumCell", for: indexPath) as! AlbumTableViewCell
         cell.albumTitle.text = album[indexPath.row].title
-        cell.albumPhoto.downloaded(from: photo[album[indexPath.row].id].thumbnailUrl)
-            print("\(album[indexPath.row].id)")
-            print("\(photo[album[indexPath.row].id].thumbnailUrl)")
+        let newUrl = "https://jsonplaceholder.typicode.com/albums/\(userId)/photos?title=\(album[indexPath.row].title)"
+        cell.albumPhoto.downloaded(from:newUrl )
             return cell
     }
 }

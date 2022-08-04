@@ -75,6 +75,6 @@ extension DetailViewController:UITableViewDataSource{
         cell.commentBody.text = comment[indexPath.row].body
         return cell
     }
-    
-    
 }
+
+
