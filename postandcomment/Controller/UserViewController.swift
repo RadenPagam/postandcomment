@@ -70,6 +70,10 @@ extension UserViewController:UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "albumCell", for: indexPath) as! AlbumTableViewCell
         cell.albumTitle.text = album[indexPath.row].title
         let newUrl = "https://jsonplaceholder.typicode.com/albums/\(userId)/photos?title=\(album[indexPath.row].title)"
+        let albums = "\( album[indexPath.row].title)"
+        let indexs = photo.enumerated().filter{ $0.element.title == albums}
+        print(indexs)
+        
         cell.albumPhoto.downloaded(from:newUrl )
             return cell
     }
