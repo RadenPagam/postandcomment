@@ -71,7 +71,7 @@ extension DetailViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentTableViewCell
-        cell.commentUserName.text = "User: \(comment[indexPath.row].name)"
+        cell.commentUserName.text = "Commenter:  \(comment[indexPath.row].name)"
         cell.commentBody.text = comment[indexPath.row].body
         return cell
     }
